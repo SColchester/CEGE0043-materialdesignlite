@@ -2,20 +2,16 @@
 var client;
 // and a variable that will hold the layer itself for the earthquake data
 var earthquakelayer;
-//function to create point, line and polygon
+//function to create point, circle and line
 function addPointLinePoly(){
 	//adding a point
 	L.marker([51.5, -0.09]).addTo(mymap);
-	//adding a polygon
-	var myPolygon = L.polygon([
-		[51.509, -0.08],
-		[51.503, -0.06],
-		[51.51, -0.047]
-		],{
-			color: 'red',
-			fillColor: '#f03',
-			fillOpacity: 0.5
-		}).addTo(mymap);
+	// add a circle
+	L.circle([51.508, -0.11], 500, {
+		color: 'red',
+		fillColor: '#f03',
+		fillOpacity: 0.5
+		}).addTo(mymap).bindPopup("I am a circle.");
 		//adding a line aka 'polyline'
 		var latlngs = [
 		[51.5, -0.09],
