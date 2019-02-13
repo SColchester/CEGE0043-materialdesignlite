@@ -47,3 +47,18 @@ function calculateDistance(lat1, lon1, lat2, lon2, unit){
 	if (unit=="N") { dist = dist * 0.8684 ;}
 	return dist;
 }
+
+function getDistanceFromMultiplePoints(position) {
+	var minDistance = 100000000000;
+	var closestQuake = "";
+	for(var i = 0; i < earthquakes.features.length; i++) {
+		var obj = earthquakes.features[i];
+		var distance = calculateDistance(position.coords.latitude,position.coords.longitude,obj.geometry.coordinates[0], obj.geometry.coordinates[1],'K');
+		if (distance < minDistance){
+			minDistance = distance;
+			closestQuake = obj.properties.place;
+		}
+	}
+	alert("Earthquake: " + closestQuake + " is distance " + minDistance + "away");
+}
+
