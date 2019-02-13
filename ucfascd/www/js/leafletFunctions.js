@@ -1,5 +1,7 @@
 // adding variable that holds a XMLHttpRequest() for the earthquake data
 var client;
+//adding a variable for measuring to multiple earthquakes
+var earthquakes;
 // and a variable that will hold the layer itself for the earthquake data
 var earthquakelayer;
 //function to create point, circle and line
@@ -38,6 +40,7 @@ var earthquakelayer;
 // convert the received data - which is text - to JSON format and add it to the map
 function loadEarthquakelayer(earthquakedata) {
 	var earthquakejson = JSON.parse(earthquakedata);
+	earthquakes = earthquakejson;
 	earthquakelayer = L.geoJson(earthquakejson).addTo(mymap);
 	mymap.fitBounds(earthquakelayer.getBounds());
 }
